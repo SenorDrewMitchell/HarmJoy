@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyText
+  source: MyString
+  lat: 9.99
+  long: 9.99
+  moment_type_id: 1
+  asset_id: 1
+  race_date_id: 2014-11-24
+  active: false
+
+two:
+  name: MyString
+  description: MyText
+  source: MyString
+  lat: 9.99
+  long: 9.99
+  moment_type_id: 1
+  asset_id: 1
+  race_date_id: 2014-11-24
+  active: false

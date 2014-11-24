@@ -1,0 +1,53 @@
+<%= form_for(@moment) do |f| %>
+  <% if @moment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@moment.errors.count, "error") %> prohibited this moment from being saved:</h2>
+
+      <ul>
+      <% @moment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :source %><br>
+    <%= f.text_field :source %>
+  </div>
+  <div class="field">
+    <%= f.label :lat %><br>
+    <%= f.text_field :lat %>
+  </div>
+  <div class="field">
+    <%= f.label :long %><br>
+    <%= f.text_field :long %>
+  </div>
+  <div class="field">
+    <%= f.label :moment_type_id %><br>
+    <%= f.number_field :moment_type_id %>
+  </div>
+  <div class="field">
+    <%= f.label :asset_id %><br>
+    <%= f.number_field :asset_id %>
+  </div>
+  <div class="field">
+    <%= f.label :race_date_id %><br>
+    <%= f.date_select :race_date_id %>
+  </div>
+  <div class="field">
+    <%= f.label :active %><br>
+    <%= f.check_box :active %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

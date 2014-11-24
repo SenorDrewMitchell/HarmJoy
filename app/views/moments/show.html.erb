@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @moment.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @moment.description %>
+</p>
+
+<p>
+  <strong>Source:</strong>
+  <%= @moment.source %>
+</p>
+
+<p>
+  <strong>Lat:</strong>
+  <%= @moment.lat %>
+</p>
+
+<p>
+  <strong>Long:</strong>
+  <%= @moment.long %>
+</p>
+
+<p>
+  <strong>Moment type:</strong>
+  <%= @moment.moment_type_id %>
+</p>
+
+<p>
+  <strong>Asset:</strong>
+  <%= @moment.asset_id %>
+</p>
+
+<p>
+  <strong>Race date:</strong>
+  <%= @moment.race_date_id %>
+</p>
+
+<p>
+  <strong>Active:</strong>
+  <%= @moment.active %>
+</p>
+
+<%= link_to 'Edit', edit_moment_path(@moment) %> |
+<%= link_to 'Back', moments_path %>
