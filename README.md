@@ -1,4 +1,11 @@
 HarmJoy
 =======
 
-An off road racing map based event tracker
+Schadenfreude
+/ˈʃaːdənfrɔydə/
+noun 
+1.
+Delight derived from the misfortunes of others, taken from German and can be translated to mean 'harm-joy.'
+
+
+Off road racing is hard, the path to success is frought with mishap, mayhem, and misfortune. HarmJoy is an off road race event tracker which lets us share in the triumphs and tribulations of our favorate racers and races. It was inspired by www.advrider.com inmate MyWay.
