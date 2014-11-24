@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :contributors
   resources :moment_types
 
   resources :tags
