@@ -46,6 +46,11 @@
       </section>
     </nav>
     <%= yield %>
+	<div class="row">
+		<div class="small-2 columns">
+			<%= link_to "admin", admin_dashboard_path %>
+		</div>	
+	</div>
     <%= javascript_include_tag "application" %>
   </body>
 </html>

@@ -6,6 +6,7 @@ class CreateMoments < ActiveRecord::Migration
       t.string :source
       t.decimal :lat
       t.decimal :long
+      t.integer :parent_moment_id
       t.integer :moment_type_id
       t.integer :asset_id
       t.date :race_date_id

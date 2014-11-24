@@ -42,6 +42,6 @@ class MomentsController < ApplicationController
     end
 
     def moment_params
-      params.require(:moment).permit(:name, :description, :source, :lat, :long, :moment_type_id, :asset_id, :race_date_id, :active)
+      params.require(:moment).permit(:name, :description, :source, :lat, :long, :parent_moment_id, :moment_type_id, :asset_id, :race_date_id, :active)
     end
 end

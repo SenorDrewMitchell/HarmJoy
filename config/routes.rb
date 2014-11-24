@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   resources :races
 
+  get "pages/admin_dashboard", :to => "pages#admin_dashboard", :as => "admin_dashboard"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
