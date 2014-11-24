@@ -7,27 +7,26 @@ default: &default
 
 development:
   <<: *default
-  database: d1mal9fmggjgns 
-  username: stcrihxdhfqkxq 
-  password: 8ZWq6wVMxUIn4Ofx95meKSUQml 
-  host: ec2-54-243-245-159.compute-1.amazonaws.com:5432/d1mal9fmggjgns
-  port: 5432
-  schema_search_path: myapp,sharedapp,public
-  min_messages: notice
+  adapter: postgresql
+  encoding: unicode
+  database: HarmJoy_development
+  pool: 5
+  host: localhost
+  username: action
+  password:
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: det64e9naoo6v1 
-  username: iuugrrjezkzwsn  
-  password: o_FILVsBj5V63OuUM_m3Q6eWCV  
-  host: ec2-54-243-245-159.compute-1.amazonaws.com:5432/det64e9naoo6v1
-  port: 5432
-  schema_search_path: myapp,sharedapp,public
-  min_messages: notice
-  
+  adapter: postgresql
+  encoding: unicode
+  database: HarmJoy_test
+  pool: 5
+  host: localhost
+  username: action
+  password:
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
 # ever seen by anyone, they now have access to your database.
