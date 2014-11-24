@@ -12,5 +12,21 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require foundation
 //= require turbolinks
 //= require_tree .
+
+$(document).ready(function(){
+  var map = L.map('map');
+
+  // create the tile layer with correct attribution
+  var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+  var osmAttrib='Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
+  var osm = new L.TileLayer(osmUrl, {minZoom: 0, maxZoom: 18, attribution: osmAttrib});		
+
+  // start the map in South-East England
+  map.setView(new L.LatLng(-34.603736, -58.381623),18);
+  map.addLayer(osm);
+});
+
+$(function(){ $(document).foundation(); });
