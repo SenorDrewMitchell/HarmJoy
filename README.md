@@ -1,8 +1,8 @@
-#####HarmJoy
+HarmJoy
 =======
 
 ###Schadenfreude
-/ˈʃaːdənfrɔydə/
+ʃaːdənfrɔydə
 noun 
 1.
 Delight derived from the misfortunes of others, taken from German and can be translated to mean 'harm-joy.'
