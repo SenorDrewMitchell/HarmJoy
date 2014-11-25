@@ -9,15 +9,3 @@
 
   </div>
 </div>
-<div class="row">
-	<div class="small-2 columns">
-		<%= link_to "contribute", dashboard_path %>
-	</div>
-	<div class="small-2 columns">
-		<% if contributor_signed_in?%>
-			<%= link_to "sign out", destroy_contributor_session_path, :method => :delete %>
-		<% else%>
-			<%= link_to "sign in", new_contributor_session_path %>
-		<% end %>
-	</div>
-</div>
