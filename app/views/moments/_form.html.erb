@@ -1,4 +1,4 @@
-<%= form_for(@moment) do |f| %>
+<%= simple_form_for @moment do |f| %>
   <% if @moment.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@moment.errors.count, "error") %> prohibited this moment from being saved:</h2>
@@ -10,44 +10,47 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :source %><br>
-    <%= f.text_field :source %>
-  </div>
-  <div class="field">
-    <%= f.label :lat %><br>
-    <%= f.text_field :lat %>
-  </div>
-  <div class="field">
-    <%= f.label :long %><br>
-    <%= f.text_field :long %>
-  </div>
-  <div class="field">
-    <%= f.label :moment_type_id %><br>
-    <%= f.number_field :moment_type_id %>
-  </div>
-  <div class="field">
-    <%= f.label :asset_id %><br>
-    <%= f.number_field :asset_id %>
-  </div>
-  <div class="field">
-    <%= f.label :race_date_id %><br>
-    <%= f.date_select :race_date_id %>
-  </div>
-  <div class="field">
-    <%= f.label :active %><br>
-    <%= f.check_box :active %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+	<div class="row">
+		<div class="small-12 medium-4 columns">
+			<div class="row">
+				<div class="small-12 medium-6 columns">
+					<%= f.input :active %>
+				</div>
+				<div class="small-12 medium-6 columns">
+					<%= f.association :race_date, :collection => RaceDay.all.map{ |rd| ["#{rd.race.name} : #{rd.name} #{rd.race_date}", rd.id]}%>
+				</div>
+			</div>
+			<div class="row">
+				<div class="small-12 columns">
+					<%= f.input :name %>
+					<%= f.input :description %>
+					<%= f.input :source %>
+					<%= f.input :moment_type_id %>
+					<%= f.input :asset_id %>
+				</div>
+			</div>
+		</div>
+		<div class="small-12 medium-8 columns">
+			<div class="row">
+				<div class="small-12 columns">
+					<div id="map" class="contributor-map"></div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="small-6 columns">
+					<%= f.input :lat %>
+				</div>
+				<div class="small-6 columns">
+					<%= f.input :long %>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="small-12 medium-6 columns">
+			  <div class="actions">
+			    <%= f.button :submit, :class => 'tiny' %>
+			  </div>
+		</div>
+	</div>
 <% end %>

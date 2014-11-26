@@ -17,19 +17,27 @@
 //= require_tree .
 
 $(document).ready(function(){  
-  var mapLayer = MQ.mapLayer(); 
-  var map = L.map('map', {
-        layers: mapLayer,
-        center: [ -34.62, -58.381623 ],
-        zoom: 14,
-        maxZoom: 17
-    });
+  if($('#map').length) {
+		var mapLayer = MQ.mapLayer(); 
+		var map = L.map('map', {
+	        layers: mapLayer,
+	        center: [ -34.62, -58.381623 ],
+	        zoom: 10,
+	        maxZoom: 17,
+			minZoom: 3
+	    });
   
-  L.control.layers({
-        'Map': mapLayer,
-        'Satellite': MQ.satelliteLayer(),
-        'Hybrid': MQ.hybridLayer()
-    }).addTo(map);  
+		L.control.layers({
+	        'Map': mapLayer,
+	        'Satellite': MQ.satelliteLayer(),
+	        'Hybrid': MQ.hybridLayer()
+		}).addTo(map); 
+
+		map.on('click', function(e) { 
+			$('#moment_lat').val(e.latlng.lat);
+			$('#moment_long').val(e.latlng.lng);
+		}) 
+  }
 });
 
 $(function(){ $(document).foundation(); });
