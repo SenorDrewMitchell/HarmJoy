@@ -62,3 +62,22 @@ tags.each do |name|
   tag.is_default = true
   tag.save
 end
+
+tags =[]
+
+moments = [
+  ["Beunos Aires"],
+  ["Villa Carlos Paz"],
+  ["San Juan"],
+  ["Chilecito"],
+  ["Copalapo"],
+  ["Antofagasta"],
+  ["Iquique"],
+  ["Uyuni"],
+  ["Calama"], 
+  ["Salta"],
+  ["Termas Rio Hondo"],
+  ["Rosario"],
+  
+  
+]
