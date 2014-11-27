@@ -54,6 +54,10 @@ tags = [
   'ass',
   'dss',
   'adv-rider',
+  'bivouac',
+  'fuel',
+  'WP',
+  'CP',
 ]
 
 tags.each do |name|

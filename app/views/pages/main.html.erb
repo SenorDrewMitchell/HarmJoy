@@ -3,6 +3,28 @@
     <div id="map" class="main-map"></div>
   </div>
   <div id="content-pane" class="small-4 columns">
-
+	  <dl class="accordion" data-accordion>
+	    <dd class="accordion-navigation">
+	      <a href="#map-tags">filter map tags</a>
+	      <div id="map-tags" class="content">
+	        <% @tags.each do |tag|%>
+				<div class="row">
+					<div class="small-1 columns">
+						<input type="checkbox" name="<%= tag.name %>" value="<%= tag.name %>">
+					</div>
+					<div class="small-11 columns">
+						<%= tag.name %>
+					</div>
+				</div>
+			<% end %>
+	      </div>
+	    </dd>
+	    <dd class="accordion-navigation">
+	      <a href="#content-accordian">content</a>
+	      <div id="content-accordian" class="content active">
+	        Panel 2. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+	      </div>
+	    </dd>
+	  </dl>
   </div>
 </div>
