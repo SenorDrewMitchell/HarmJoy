@@ -1,7 +1,7 @@
 class Tag < ActiveRecord::Base
   has_and_belongs_to_many :moments
 
-  def before_save 
+  before_save do
     self.name = Tag.normalize_tag_name(self.name)
   end 
   
@@ -11,4 +11,14 @@ class Tag < ActiveRecord::Base
     end
   end
   
+  def self.build_tag_id_array_from_comma_seperated_string(string) 
+    tags = []
+     string.split(',').each do |tag_name|
+       tag = Tag.find_or_initialize_by(:name => Tag.normalize_tag_name(tag_name.strip))
+       tag.save
+       tags << tag.id
+     end
+     
+     return tags
+  end
 end

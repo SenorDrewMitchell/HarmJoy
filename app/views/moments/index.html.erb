@@ -5,34 +5,23 @@
 		<table>
 		  <thead>
 		    <tr>
-		      <th>Name</th>
-		      <th>Description</th>
-		      <th>Source</th>
+  		      <th colspan="2"></th>
+			  <th>Name</th>
 		      <th>Lat</th>
 		      <th>Long</th>
-		      <th>Moment type</th>
-		      <th>Asset</th>
-		      <th>Race date</th>
 		      <th>Active</th>
-		      <th colspan="3"></th>
 		    </tr>
 		  </thead>
 
 		  <tbody>
 		    <% @moments.each do |moment| %>
 		      <tr>
-		        <td><%= moment.name %></td>
-		        <td><%= moment.description %></td>
-		        <td><%= moment.source %></td>
+		        <td><%= link_to raw('<i class="fi-pencil"></i>'), edit_moment_path(moment) %></td>
+		        <td><%= link_to raw('<i class="fi-trash"></i>'), moment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+				<td><%= moment.name %></td>
 		        <td><%= moment.lat %></td>
 		        <td><%= moment.long %></td>
-		        <td><%= moment.moment_type_id %></td>
-		        <td><%= moment.asset_id %></td>
-		        <td><%= moment.race_date_id %></td>
-		        <td><%= moment.active %></td>
-		        <td><%= link_to 'Show', moment %></td>
-		        <td><%= link_to 'Edit', edit_moment_path(moment) %></td>
-		        <td><%= link_to 'Destroy', moment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+		        <td><%= moment.active ? raw('<i class="fi-check"></i>') : raw('<i class="fi-x"></i>') %></td>
 		      </tr>
 		    <% end %>
 		  </tbody>

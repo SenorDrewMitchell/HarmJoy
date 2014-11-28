@@ -23,12 +23,25 @@ class MomentsController < ApplicationController
   def create
     @moment = Moment.new(moment_params)
     @moment.save
-    respond_with(@moment)
+    redirect_to moments_path
   end
 
   def update
-    @moment.update(moment_params)
-    respond_with(@moment)
+    if @moment.update(moment_params)    
+      tags = []
+      if params.has_key?(:comma_seperated_tag_string)
+        tags = Tag.build_tag_id_array_from_comma_seperated_string(params[:comma_seperated_tag_string])
+      end
+      if params[:moment].has_key?(:tag_ids)
+        tags = params[:moment][:tag_ids] + tags
+      end
+      @moment.associate_tags_by_id_array(tags)
+    
+      redirect_to moments_path, :alert => "Moment succesfully updated"
+    else  
+      render action: 'edit'  
+    end
+    
   end
 
   def destroy
@@ -37,11 +50,12 @@ class MomentsController < ApplicationController
   end
 
   private
+  
     def set_moment
       @moment = Moment.find(params[:id])
     end
 
     def moment_params
-      params.require(:moment).permit(:name, :description, :source, :lat, :long, :parent_moment_id, :moment_type_id, :asset_id, :race_date_id, :active)
+      params.require(:moment).permit(:name, :description, :source, :lat, :long, :tag_ids,:race_day_id, :active)
     end
 end

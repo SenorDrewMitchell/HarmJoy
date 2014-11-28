@@ -22,8 +22,6 @@
         <li class="name">
           <h1><%= link_to "OpenRallyMap", root_path %></h1>
         </li>
-         <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
-        <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
       </ul>
 
       <section class="top-bar-section">
@@ -53,7 +51,23 @@
 
         <!-- Left Nav Section -->
         <ul class="left">
-          <li><a href="#">Left Nav Button</a></li>
+		<li class="has-dropdown">
+			<a href="#">
+				<%
+					current_race_day = RaceDay.where("race_date = '#{Date.today}'").first
+					current_race_day = current_race_day.nil? ? Date.today : current_race_day
+				%>
+				
+				<i class="fi-calendar"></i> <%= current_race_day %>
+			</a>
+			<ul class="dropdown">
+				<% RaceDay.all.each do |race_date| %>
+					<li>
+						<a href="#"><%= "#{race_date.name} : #{race_date.race_date}"%></a>
+					</li>
+				<% end %>
+			</ul>
+		</li>
         </ul>
       </section>
     </nav>

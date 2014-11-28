@@ -17,7 +17,7 @@
 					<%= f.input :active %>
 				</div>
 				<div class="small-12 medium-6 columns">
-					<%= f.association :race_date, :collection => RaceDay.all.map{ |rd| ["#{rd.race.name} : #{rd.name} #{rd.race_date}", rd.id]}%>
+					<%= f.association :race_day, :collection => RaceDay.all.map{ |rd| ["#{rd.race.name} : #{rd.name} #{rd.race_date}", rd.id]}%>
 				</div>
 			</div>
 			<div class="row">
@@ -25,8 +25,25 @@
 					<%= f.input :name %>
 					<%= f.input :description %>
 					<%= f.input :source %>
-					<%= f.input :moment_type_id %>
-					<%= f.input :asset_id %>
+					<div class="small-12 columns tag-list" data-module="tag-list">
+						<label for="tag_input">Tags:</label>
+						<input type="text" id="comma_seperated_tag_string" name="comma_seperated_tag_string" placeholder="Add tags. Use commas to separate." />
+						<div class="row">
+							<div class="small-12 columns">
+								<div id="tag-list-controls" class="hidden" style="display: none;">
+									<%= f.association :tags, as: :check_boxes, :label => false, collection: @moment.tags.order(:name => :asc)%>
+								</div>
+								<div id="tag-list-display">
+									<% @moment.tags.order(:name => :asc).each do |tag| %>
+										<span class="label tag radius secondary">
+											<%= tag.name %> 
+											<a href="#" class="close" data-tag-id="<%= tag.id %>"><i class="fi-x"></i></a>
+										</span>
+									<% end %>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

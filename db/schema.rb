@@ -27,6 +27,10 @@ ActiveRecord::Schema.define(version: 20141126062753) do
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "admin",                  default: false
@@ -37,23 +41,13 @@ ActiveRecord::Schema.define(version: 20141126062753) do
   add_index "contributors", ["email"], name: "index_contributors_on_email", unique: true, using: :btree
   add_index "contributors", ["reset_password_token"], name: "index_contributors_on_reset_password_token", unique: true, using: :btree
 
-  create_table "moment_types", force: true do |t|
-    t.string   "name"
-    t.string   "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "moments", force: true do |t|
     t.string   "name"
     t.text     "description"
     t.string   "source"
     t.decimal  "lat"
     t.decimal  "long"
-    t.integer  "parent_moment_id"
-    t.integer  "moment_type_id"
-    t.integer  "asset_id"
-    t.date     "race_date_id"
+    t.date     "race_day_id"
     t.boolean  "active"
     t.datetime "created_at"
     t.datetime "updated_at"

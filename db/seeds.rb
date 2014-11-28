@@ -56,8 +56,13 @@ tags = [
   'adv-rider',
   'bivouac',
   'fuel',
-  'WP',
-  'CP',
+  'wp',
+  'cp',
+  'race-prep',
+  'photo',
+  'video',
+  'tweet',
+  'host-city'
 ]
 
 tags.each do |name|
@@ -69,19 +74,32 @@ end
 
 tags =[]
 
+#name, description, source, lat, long
 moments = [
-  ["Beunos Aires"],
-  ["Villa Carlos Paz"],
-  ["San Juan"],
-  ["Chilecito"],
-  ["Copalapo"],
-  ["Antofagasta"],
-  ["Iquique"],
-  ["Uyuni"],
-  ["Calama"], 
-  ["Salta"],
-  ["Termas Rio Hondo"],
-  ["Rosario"],
-  
-  
+  ["Beunos Aires - Start", nil, nil, -34.603684, -58.381559],
+  ["Villa Carlos Paz", nil, nil, -31.421013, -64.499444],
+  ["San Juan", nil, nil, -31.527273, -68.521408],
+  ["Chilecito", nil, nil, -29.165960, -67.500000],
+  ["Copiapo", nil, nil, -27.366359, -70.332237],
+  ["Antofagasta", nil, nil, -23.650000, -70.400000],
+  ["Iquique", nil, nil, -20.216700, -70.142223],
+  ["Uyuni", nil, nil, -20.460353, -66.826065],
+  ["Calama", nil, nil, -22.453712, -68.925307], 
+  ["Salta", nil, nil, -24.782932, -65.412155],
+  ["Termas Rio Hondo", nil, nil, -37.973995, -57.597332],
+  ["Rosario", nil, nil, -32.950741, -60.666500],
+  ["Beunos Aires - Finish", nil, nil, -34.603684, -58.381559],
 ]
+
+
+moments.each do |name, description, source, lat, long|
+  moment = Moment.find_or_initialize_by(:name => name)
+  moment.description = description
+  moment.source = source
+  moment.lat = lat
+  moment.long = long
+  moment.active = true
+  #TODO this adds dupes, feex it!
+  moment.tags << Tag.find_by(:name => 'host-city')
+  moment.save
+end
