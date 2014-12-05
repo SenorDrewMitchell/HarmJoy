@@ -4,6 +4,7 @@ gem 'devise'
 gem 'foundation-rails'
 gem 'foundation-icons-sass-rails'
 gem 'simple_form'
+gem 'gon'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.0'

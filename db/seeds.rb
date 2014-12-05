@@ -53,16 +53,16 @@ tags = [
   'truck',
   'ass',
   'dss',
-  'adv-rider',
+  'adv rider',
   'bivouac',
   'fuel',
   'wp',
   'cp',
-  'race-prep',
+  'race prep',
   'photo',
   'video',
   'tweet',
-  'host-city'
+  'host city'
 ]
 
 tags.each do |name|
@@ -71,8 +71,6 @@ tags.each do |name|
   tag.is_default = true
   tag.save
 end
-
-tags =[]
 
 #name, description, source, lat, long
 moments = [
@@ -100,6 +98,6 @@ moments.each do |name, description, source, lat, long|
   moment.long = long
   moment.active = true
   #TODO this adds dupes, feex it!
-  moment.tags << Tag.find_by(:name => 'host-city')
+  moment.tags << Tag.find_or_create_by(:name => 'host_city') unless moment.tags.include?(Tag.find_by(:name => 'host_city'))
   moment.save
 end

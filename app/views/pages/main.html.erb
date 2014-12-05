@@ -10,7 +10,7 @@
 	        <% @tags.each do |tag|%>
 				<div class="row">
 					<div class="small-1 columns">
-						<input type="checkbox" name="<%= tag.name %>" value="<%= tag.name %>" checked>
+						<input type="checkbox" name="<%= tag.name %>" value="<%= tag.name %>" class="tag-filter" checked>
 					</div>
 					<div class="small-11 columns">
 						<%= tag.name %>

@@ -5,9 +5,12 @@ class Tag < ActiveRecord::Base
     self.name = Tag.normalize_tag_name(self.name)
   end 
   
+  scope :active_tags_with_moments_ordered, -> {where(:active => true).where(:id => Tag.select(:id).joins(:moments).group('tags.id') ).order(name: :asc)}
+  
+  
   def self.normalize_tag_name(string)
     if !string.nil? 
-      return string.to_s.strip.gsub(/[^A-Za-z0-9-\s]+/, "").gsub(/[_\s]+/, '-').downcase
+      return string.to_s.strip.gsub(/[^A-Za-z0-9-\s]+/, "").gsub(/[_\s]+/, '_').downcase
     end
   end
   
