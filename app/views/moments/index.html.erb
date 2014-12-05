@@ -17,7 +17,7 @@
 		    <% @moments.each do |moment| %>
 		      <tr>
 		        <td><%= link_to raw('<i class="fi-pencil"></i>'), edit_moment_path(moment) %></td>
-		        <td><%= link_to raw('<i class="fi-trash"></i>'), moment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+		        <td><%= link_to raw('<i class="fi-trash"></i>'), moment, method: :delete %></td>
 				<td><%= moment.name %></td>
 		        <td><%= moment.lat %></td>
 		        <td><%= moment.long %></td>
