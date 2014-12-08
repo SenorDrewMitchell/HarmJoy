@@ -7,7 +7,21 @@
 	    <dd class="accordion-navigation">
 	      <a href="#map-tags">filter map tags</a>
 	      <div id="map-tags" class="content">
-	        <% @tags.each do |tag|%>
+		  	  <%
+		  		current_race_day = RaceDay.where("race_date = '#{Date.today}'").first
+		  		current_race_day = current_race_day.nil? ? Date.today : current_race_day
+		  	  %>
+		  	  <button data-dropdown="drop1" aria-controls="drop1" aria-expanded="false">
+		  		  <i class="fi-calendar"></i> <%= current_race_day %>
+		  	  </button>
+		  	  <ul id="drop1" class="f-dropdown  medium" data-dropdown-content aria-hidden="true" tabindex="-1">
+		  			<% RaceDay.all.each do |race_date| %>
+		  				<li>
+		  					<a href="#"><%= "#{race_date.name} : #{race_date.race_date}"%></a>
+		  				</li>
+		  			<% end %>
+		  	  </ul>
+			<% @tags.each do |tag|%>
 				<div class="row">
 					<div class="small-1 columns">
 						<input type="checkbox" name="<%= tag.name %>" value="<%= tag.name %>" class="tag-filter" checked>
@@ -22,7 +36,8 @@
 	    <dd class="accordion-navigation">
 	      <a href="#content-accordian">content</a>
 	      <div id="content-accordian" class="content active">
-	        Panel 2. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+			  <div id="marker-embeddable-content">
+		      </div>
 	      </div>
 	    </dd>
 	  </dl>

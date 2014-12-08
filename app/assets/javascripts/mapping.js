@@ -70,6 +70,12 @@ $.mapping = {
 				if (gon.moments[moment].length) {
 					geoJsonLayer = L.geoJson(gon.moments[moment], 
 						{ onEachFeature: onEachFeature }).addTo(map);
+					
+					geoJsonLayer.on('click', function(e) {
+						if (e.layer.feature.properties && e.layer.feature.properties.embedableCode) {
+							$('#marker-embeddable-content').html(e.layer.feature.properties.embedableCode);
+						}
+					});
 						
 					geoJsonLayers[moment] = geoJsonLayer;
 				}

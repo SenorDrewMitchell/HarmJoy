@@ -61,6 +61,6 @@ class MomentsController < ApplicationController
     end
 
     def moment_params
-      params.require(:moment).permit(:name, :description, :source, :lat, :long, :tag_ids,:race_day_id, :active)
+      params.require(:moment).permit(:name, :description, :source, :lat, :long, :tag_ids,:race_day_id, :active, :embedable_code)
     end
 end

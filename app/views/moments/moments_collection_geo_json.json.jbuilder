@@ -5,6 +5,7 @@
       json.properties do
         json.name moment.name
         json.popupContent moment.name.to_s + " - " + moment.description.to_s
+        json.embedableCode moment.embedable_code
       end
       json.geometry do
         json.type "Point"
